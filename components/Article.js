@@ -111,3 +111,48 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+
+const articlesDiv = document.querySelector(`.articles`)
+
+
+const articleMaker = (obj => {
+  let article = document.createElement(`div`)
+  article.classList.add(`article`)
+  articlesDiv.appendChild(article)
+  let articleTitle = document.createElement(`h2`)
+  articleTitle.textContent = obj.title
+  article.appendChild(articleTitle)
+  let articleDate = document.createElement(`p`)
+  articleDate.classList.add(`date`)
+  articleDate.textContent = obj.date
+  article.appendChild(articleDate)
+  let paragraphOne = document.createElement(`p`)
+  paragraphOne.textContent = obj.firstParagraph
+  article.appendChild(paragraphOne)
+  let paragraphTwo = document.createElement(`p`)
+  paragraphTwo.textContent = obj.secondParagraph
+  article.appendChild(paragraphTwo)
+  let paragraphThree = document.createElement(`p`)
+  paragraphThree.textContent = obj.thirdParagraph
+  article.appendChild(paragraphThree)
+  let articleExpand = document.createElement(`span`)
+  articleExpand.classList.add(`expandButton`)
+  articleExpand.textContent = `+`
+  article.appendChild(articleExpand)
+
+  return article
+})
+// const expandButton = document.querySelectorAll(`.expandButton`)
+
+const expandButton = document.getElementsByClassName(`expandButton`)
+// const expandArray = Array.from(expandButton)
+console.log(expandButton)
+// console.log(expandArray)
+
+expandButton.forEach((item) => {
+  item.addEventListener(`click`, () => {
+  expandButton.classList.toggle(`article-open`)
+})
+})
+
+data.forEach(articleMaker)
