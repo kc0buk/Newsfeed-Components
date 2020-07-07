@@ -138,6 +138,46 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+class Article {
+  constructor(obj) {
+    this.title = obj.title,
+    this.date = obj.date,
+    this.firstParagraph = obj.firstParagraph,
+    this.secondParagraph = obj.secondParagraph,
+    this.thirdParagraph = obj.secondParagraph
+  }
+  articleMaker(obj) {
+    let article = document.createElement(`div`)
+    article.classList.add(`article`)
+    articlesDiv.appendChild(article)
+    let articleTitle = document.createElement(`h2`)
+    articleTitle.textContent = obj.title
+    article.appendChild(articleTitle)
+    let articleDate = document.createElement(`p`)
+    articleDate.classList.add(`date`)
+    articleDate.textContent = obj.date
+    article.appendChild(articleDate)
+    let paragraphOne = document.createElement(`p`)
+    paragraphOne.textContent = obj.firstParagraph
+    article.appendChild(paragraphOne)
+    let paragraphTwo = document.createElement(`p`)
+    paragraphTwo.textContent = obj.secondParagraph
+    article.appendChild(paragraphTwo)
+    let paragraphThree = document.createElement(`p`)
+    paragraphThree.textContent = obj.thirdParagraph
+    article.appendChild(paragraphThree)
+    let articleExpand = document.createElement(`span`)
+    articleExpand.classList.add(`expandButton`)
+    articleExpand.textContent = `+`
+    article.appendChild(articleExpand)
+    // console.log(article)
+    article.addEventListener(`click`, (a) => {
+      a.target.parentNode.classList.toggle(`article-open`)
+    })
+    return article
+  }
+}
+
 
 const articlesDiv = document.querySelector(`.articles`)
 

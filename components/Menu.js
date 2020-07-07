@@ -31,11 +31,13 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned menu to the header.
 */
+
 const header = document.querySelector(`.header`)
 const menuMaker =  arr => {
   const menuButton = document.querySelector(`.menu-button`)
   const menuDiv = document.createElement(`div`)
   menuDiv.classList.add(`menu`)
+  menuDiv.id = `menu`
   menuButton.appendChild(menuDiv)
   const menuList = document.createElement(`ul`)
   menuDiv.appendChild(menuList)
@@ -54,5 +56,13 @@ const menuMaker =  arr => {
 
 // console.log(menuMaker())
 
-
 header.appendChild(menuMaker(menuItems))
+const tween = gsap.from(`.menu--open`, {
+    duration: 2.5,
+    paused: true,
+    reversed: true
+  })
+document.querySelector(`.menu--open`).addEventListener(`click`, () => {
+  tween.play();
+})
+
