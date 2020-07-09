@@ -206,8 +206,8 @@ const articleMaker = (obj => {
   articleExpand.textContent = `+`
   article.appendChild(articleExpand)
   // console.log(article)
-  article.addEventListener(`click`, (a) => {
-    a.target.parentNode.classList.toggle(`article-open`)
+  article.addEventListener(`click`, () => {
+    article.classList.toggle(`article-open`)
   })
 
   return article
